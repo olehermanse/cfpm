@@ -1,0 +1,11 @@
+bundle agent hello_world
+{
+  reports:
+    "Hello, world from cpm!";
+}
+
+bundle agent __main__
+{
+  methods:
+    "hello_world";
+}
