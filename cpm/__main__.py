@@ -191,6 +191,8 @@ class CPM:
             return self.download_zip(pkg)
         elif "git" in pkg:
             return self.download_git(pkg)
+        elif "policy" in pkg:
+            return self.download_policy(pkg)
         else:
             raise NotImplementedError()
 

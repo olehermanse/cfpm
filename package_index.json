@@ -5,7 +5,7 @@
   },
   "client-initiated-reporting": {
     "description": "Configures CFEngine for client initiated reporting",
-    "def": "https://raw.githubusercontent.com/olehermanse/cpm/master/examples/def.json",
+    "def": "https://raw.githubusercontent.com/olehermanse/cpm/master/examples/def.json"
   },
   "file-changes-framework": {
     "author": "Nick Anderson",
@@ -13,7 +13,7 @@
     "policy": {
         "https://raw.githubusercontent.com/nickanderson/cfengine-file_integrity_monitoring/master/policy/monitor_file_paths_tagged_all_changes.cf": "lib/FIM/"
     },
-    "def": "https://raw.githubusercontent.com/nickanderson/cfengine-file_integrity_monitoring/master/def.json",
+    "def": "https://raw.githubusercontent.com/nickanderson/cfengine-file_integrity_monitoring/master/def.json"
   },
   "cis-framework": {
     "description": "Framework for inventory and automatic remediation of CIS benchmarks",
