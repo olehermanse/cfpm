@@ -20,7 +20,7 @@ from contextlib import closing
 # Folder discovery and path insertion:
 
 def package_location(module_file_path):
-    return abspath( dirname(realpath(module_file_path)) + "/../" )
+    return abspath(dirname(realpath(module_file_path)) + "/../")
 
 sys.path.insert(0, package_location(__file__))
 
@@ -290,12 +290,9 @@ class CPM:
             print("Package installers skipped (auto_apply is off).")
             print("Use 'cpm apply {}' to run the installer for this package".format(pkg_name_user))
 
-def main(commands):
-    c = CPM(package_location(__file__))
-    c.run(commands)
 
 def get_args():
-    parser = argparse.ArgumentParser(description='CFEngine package manager.')
+    parser = argparse.ArgumentParser(description='CFEngine package manager')
     parser.add_argument('commands', metavar='cmd', type=str, nargs='+',
                         help='The command to perform')
     parser.add_argument('--loglevel', '-l',
@@ -320,8 +317,11 @@ def set_log_level(level):
     else:
         raise ValueError("Unknown log level: {}".format(level))
 
-
-if __name__ == '__main__':
+def main():
     args = get_args()
     set_log_level(args.loglevel)
-    main(args.commands)
+    c = CPM(package_location(__file__))
+    c.run(args.commands)
+
+if __name__ == '__main__':
+    main()
