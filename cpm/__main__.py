@@ -45,6 +45,10 @@ def get_index(seq, index):
     except IndexError:
         return None
 
+def download_file(url, path):
+    r = requests.get(url)
+    open(path, 'wb').write(r.content)
+
 class CPM:
     def __init__(self, root_path):
         self.root = Folder(root_path)
@@ -184,6 +188,21 @@ class CPM:
 
         return dst
 
+    def download_policy(self, pkg):
+        name = pkg["name"]
+        policy = pkg["policy"]
+        if type(policy) is str:
+            policy = {policy: None}
+
+        folder = self.user.packages.folder(name)
+        for src, dest in policy.items():
+            if not dest:
+                dest = os.path.basename(src)
+            file = folder.file(dest)
+            download_file(src, file.path)
+
+        sys.exit(1)
+
 
     def download(self, pkg):
         print("Downloading '{}'...".format(pkg["name"]))
@@ -277,6 +296,7 @@ class CPM:
         if not pkg_name:
             user_error("Package '{}' not found!".format(pkg_name_user))
         pkg = self.package_index.data[pkg_name]
+        pkg["name"] = pkg_name
         self.download(pkg)
         self.user.installed.data[pkg_name] = pkg
         self.user.installed.save()

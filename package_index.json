@@ -18,7 +18,10 @@
   "cis-framework": {
     "description": "Framework for inventory and automatic remediation of CIS benchmarks",
     "author": "Nick Anderson",
-    "zip": "https://github.com/nickanderson/cfengine-cis/archive/master.zip"
+    "zip": "https://github.com/nickanderson/cfengine-cis/archive/master.zip",
+    "installers": [
+      "make"
+    ]
   },
   "lynis-inventory": {
     "author": "Nick Anderson",

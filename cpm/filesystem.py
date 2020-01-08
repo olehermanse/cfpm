@@ -34,7 +34,7 @@ def load_json(path):
     try:
         with open(path, 'r', encoding="utf-8") as in_file:
             return json.load(in_file, object_pairs_hook=OrderedDict)
-    except:
+    except FileNotFoundError:
         return OrderedDict()
 
 def jsonify(data):
